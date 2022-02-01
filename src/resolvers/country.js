@@ -18,6 +18,8 @@ const country = async (parent, { countryCode }, info, context) => {
     longitude: countryData?.latlng[1],
     population: countryData?.population,
     flagImageUrl: countryData?.flags?.png,
+    _currencies: countryData?.currencies,
+    _capital: countryData?.capital[0],
   };
 };
 
