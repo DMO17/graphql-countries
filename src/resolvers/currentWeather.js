@@ -1,16 +1,17 @@
-const currentWeather = async (parent, args) => {
-  const apiKey = "393609ac7b2e5f25ccdd00e626ee13dd";
+const axios = require("axios");
+const moment = require("moment");
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`;
+const currentWeather = async (parent, args) => {
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${parent.name}&appid=${process.env.API_WEATHER_KEY}`;
 
   const { data } = await axios.get(url);
 
   return {
-    date: "TODAY",
+    date: moment.unix(data.dt).format("DD/MM/YYYY"),
     temperature: data.main?.temp,
     humidity: data.main?.humidity,
     windSpeed: data.wind?.speed,
-    weatherIconUrl: data.weather[0]?.icon,
+    weatherIconUrl: `http://openweathermap.org/img/w/${data.weather[0]?.icon}.png`,
   };
 };
 

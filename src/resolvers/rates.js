@@ -1,7 +1,7 @@
 const axios = require("axios");
 
 const rates = async () => {
-  const url = `https://openexchangerates.org/api/latest.json?app_id=01ff3023a68848a08c4e98a88c54629c`;
+  const url = `https://openexchangerates.org/api/latest.json?app_id=${process.env.API_RATES_KEY}`;
 
   const { data } = await axios.get(url);
 
