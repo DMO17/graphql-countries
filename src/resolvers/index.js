@@ -1,6 +1,9 @@
 const country = require("./country");
 const currencies = require("./currencies");
 const rates = require("./rates");
+const capital = require("./capital");
+const currentWeather = require("./currentWeather");
+const forecastWeather = require("./forecastWeather");
 
 const resolvers = {
   Query: {
@@ -9,10 +12,16 @@ const resolvers = {
 
   Country: {
     currencies,
+    capital,
   },
 
   Currency: {
     rates,
+  },
+
+  Capital: {
+    currentWeather,
+    forecastWeather,
   },
 };
 
